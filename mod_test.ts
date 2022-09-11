@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.155.0/testing/asserts.ts";
-import { render } from "./main.ts";
+import { render } from "./mod.ts";
 
 Deno.test(function renderTest() {
   assertEquals(
@@ -49,6 +49,6 @@ Deno.test(function renderTest() {
   {#each Array(10).map((_, i) =&gt; i) as }
     &lt;li on:click={() =&gt; count = i}&gt;Set count to {i}&lt;/li&gt;
   {/each}
-&lt;/ul&gt;</code></pre>`,
+&lt;/ul&gt;</code></pre>`
   );
 });
