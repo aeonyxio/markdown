@@ -11,9 +11,9 @@ jobs:
         with:
           deno-version: v1.x # Run with latest stable Deno.
 
-      # Check if the code is formatted according to Deno's default formatting conventions.
-      - name: Check formatting
-        run: deno fmt --check
+      # # Check if the code is formatted according to Deno's default formatting conventions.
+      # - name: Check formatting
+      #   run: deno fmt --check
 
       # Scan the code for syntax errors and style issues. If
       - run: deno lint

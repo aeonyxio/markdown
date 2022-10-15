@@ -20,9 +20,11 @@ export const render = (markdown: string) => {
           ? Prism.languages[language]
           : undefined;
       if (grammar === undefined) {
-        return `<pre><code class="notranslate">${htmlEscape(
-          code
-        )}</code></pre>`;
+        return `<pre><code class="notranslate">${
+          htmlEscape(
+            code,
+          )
+        }</code></pre>`;
       }
       const html = Prism.highlight(code, grammar, language!);
       return `<pre class="highlight highlight-source-${language} notranslate">${html}</pre>`;
@@ -40,16 +42,18 @@ export const render = (markdown: string) => {
 
       if (!id) {
         if (level === 2) id = heading.replace(/\s+/g, "-").toLowerCase();
-        else if (level === 3)
+        else if (level === 3) {
           id = `${lastHeading}-${heading}`.replace(/\s+/g, "-").toLowerCase();
+        }
       }
 
-      if (level === 2 || level === 3)
+      if (level === 2 || level === 3) {
         tableOfContents.push({
           level,
           heading,
           id,
         });
+      }
 
       return `<h${level}${id ? ` id="${id}"` : ""}>${text}</h${level}>`;
     }
@@ -61,6 +65,5 @@ export const render = (markdown: string) => {
     renderer: new Renderer(),
   });
 
-  console.log("exiting", html);
   return { contents: tableOfContents, html };
 };
